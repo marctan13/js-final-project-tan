@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Project: Number Guessing Game</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header id="title">
+      <h1>Number Guesser</h1>
+    </header>
+
+    <div class="player-amount">
+      <button onclick="showCPU()" class="button" id="computer">Vs CPU</button>
+      <button onclick="showTwo()" class="button" id="two-player">
+        2 Player
+      </button>
+      <button onclick="showThree()" class="button" id="three-player">
+        3 Player
+      </button>
+      <button onclick="showFour()" class="button" id="four-player">
+        4 Player
+      </button>
+      <button onclick="showFive()" class="button" id="five-player">
+        5 Player
+      </button>
+      <button onclick="showSix()" class="button" id="six-player">
+        6 Player
+      </button>
+    </div>
+    <!-- Rounds and Target Score-->
+    <div class="rounds">
+      <p class="round-label">Round <span id="round-number">1</span></p>
+      <p class="guess-label">
+        Target Number: <span id="target-number">?</span>
+      </p>
+    </div>
+    <main>
+      <div class="game-container">
+        <div class="row">
+          <!-- Player 1 Window -->
+          <div
+            class="player card border-dark mb-3"
+            style="max-width: 24rem"
+            id="p1"
+          >
+            <div class="card-body">
+              <input type="text" class="player-title" placeholder="Player 1" />
+              <p class="score-label">
+                Score: <span id="player1-score">0</span>
+              </p>
+              <p class="score-difference">
+                <span class="winner" id="winner-one"></span><br />
+                <span class="difference" id="player1-difference"></span>
+              </p>
+            </div>
+            <input
+              class="guess"
+              type="password"
+              id="player1-guess"
+              min="0"
+              max="100"
+              placeholder="Enter a number 1- 100"
+              required
+            />
+          </div>
+
+          <!-- CPU -->
+          <div
+            class="player extra-player card border-dark mb-3"
+            style="max-width: 24rem"
+            id="cpu"
+          >
+            <div class="card-body">
+              <h5 class="player-title">CPU</h5>
+              <p class="score-label">
+                Score: <span id="computer-score">0</span>
+              </p>
+              <p class="score-difference">
+                <span class="winner" id="winner-computer"></span><br />
+                <span class="difference" id="computer-difference"></span>
+              </p>
+              <p id="computer-guess">?</p>
+              <p class="winning-text" id="computer-wins"></p>
+            </div>
+          </div>
+
+          <!-- Player 2 -->
+          <div
+            class="player extra-player card border-dark mb-3 extra-player"
+            style="max-width: 24rem"
+            id="p2"
+          >
+            <div class="card-body">
+              <input type="text" class="player-title" placeholder="Player 2" />
+              <p class="score-label">
+                Score: <span id="player2-score">0</span>
+              </p>
+              <p class="score-difference">
+                <span class="winner" id="winner-two"></span><br />
+                <span class="difference" id="player2-difference"></span>
+              </p>
+            </div>
+            <input
+              class="guess"
+              type="password"
+              id="player2-guess"
+              min="0"
+              max="100"
+              placeholder="Enter a number 1- 100"
+              required
+            />
+          </div>
+          <!-- Player 3 -->
+          <div
+            class="player extra-player card border-dark mb-3 extra-player"
+            style="max-width: 24rem"
+            id="p3"
+          >
+            <div class="card-body">
+              <input type="text" class="player-title" placeholder="Player 3" />
+              <p class="score-label">
+                Score: <span id="player3-score">0</span>
+              </p>
+              <p class="score-difference">
+                <span class="winner" id="winner-three"></span><br />
+                <span class="difference" id="player3-difference"></span>
+              </p>
+            </div>
+            <input
+              class="guess"
+              type="password"
+              id="player3-guess"
+              min="0"
+              max="100"
+              placeholder="Enter a number 1- 100"
+              required
+            />
+          </div>
+          <!-- Player 4 -->
+          <div
+            class="player extra-player card border-dark mb-3 extra-player"
+            style="max-width: 24rem"
+            id="p4"
+          >
+            <div class="card-body">
+              <input type="text" class="player-title" placeholder="Player 4" />
+              <p class="score-label">
+                Score: <span id="player4-score">0</span>
+              </p>
+              <p class="score-difference">
+                <span class="winner" id="winner-four"></span><br />
+                <span class="difference" id="player4-difference"></span>
+              </p>
+            </div>
+            <input
+              class="guess"
+              type="password"
+              id="player4-guess"
+              min="0"
+              max="100"
+              placeholder="Enter a number 1- 100"
+              required
+            />
+          </div>
+          <!-- Player 5 -->
+          <div
+            class="player extra-player card border-dark mb-3 extra-player"
+            style="max-width: 24rem"
+            id="p5"
+          >
+            <div class="card-body">
+              <input type="text" class="player-title" placeholder="Player 5" />
+              <p class="score-label">
+                Score: <span id="player5-score">0</span>
+              </p>
+              <p class="score-difference">
+                <span class="winner" id="winner-five"></span><br />
+                <span class="difference" id="player5-difference"></span>
+              </p>
+            </div>
+            <input
+              class="guess"
+              type="password"
+              id="player5-guess"
+              min="0"
+              max="100"
+              placeholder="Enter a number 1- 100"
+              required
+            />
+          </div>
+          <!-- Player 6 -->
+          <div
+            class="player extra-player card border-dark mb-3 extra-player"
+            style="max-width: 24rem"
+            id="p6"
+          >
+            <div class="card-body">
+              <input type="text" class="player-title" placeholder="Player 6" />
+              <p class="score-label">
+                Score: <span id="player6-score">0</span>
+              </p>
+              <p class="score-difference">
+                <span class="winner" id="winner-six"></span><br />
+                <span class="difference" id="player6-difference"></span>
+              </p>
+            </div>
+            <input
+              class="guess"
+              type="password"
+              id="player6-guess"
+              min="0"
+              max="100"
+              placeholder="Enter a number 1- 100"
+              required
+            />
+          </div>
+          <!-- Difference Summary -->
+          <div class="difference-summary">
+            <h5 id="summary-title">Cumulative Difference Summary</h5>
+            <div class="diff-summary">
+              <p id="p1-summary">
+                Player 1:
+                <br><span class="total-difference" id="cumu-difference-1"></span>
+              </p>
+              <p class="player-summary" id="p2-summary">
+                Player 2:
+                <br><span class="total-difference" id="cumu-difference-2"></span>
+              </p>
+              <p class="player-summary" id="p3-summary">
+                Player 3:
+                <br><span class="total-difference" id="cumu-difference-3"></span>
+              </p>
+              <p class="player-summary" id="p4-summary">
+                Player 4:
+                <br><span class="total-difference" id="cumu-difference-4"></span>
+              </p>
+              <p class="player-summary" id="p5-summary">
+                Player 5:
+                <br><span class="total-difference" id="cumu-difference-5"></span>
+              </p>
+              <p class="player-summary" id="p6-summary">
+                Player 6:
+                <br><span class="total-difference" id="cumu-difference-6"></span>
+              </p>
+              <p class="player-summary" id="cpu-summary">
+                Computer:
+                <br><span
+                  class="total-difference"
+                  id="cumu-difference-computer"
+                ></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Submit Guess and Next Round button-->
+        <div class="next-round-container">
+          <button class="button" id="guess">Submit</button>
+          <button class="button" id="next-round" disabled>Next Round</button>
+        </div>
+      </div>
+    </main>
+    <footer id="footer">
+      <p>
+        Javascript project made by
+        <a href="https://marctan13.wixsite.com/portfolio">Marc Tan</a>
+      </p>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

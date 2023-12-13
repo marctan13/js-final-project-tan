@@ -1,0 +1,105 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #9BC1BC;
+}
+
+#title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.rounds{
+    display: block;
+    text-align: center;
+    margin: 20px;
+    font-size: 32px;
+}
+
+/* to remove arrows in input field */
+/* source: https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+}
+
+.difference-summary{
+    display: inline-block;
+    float: right;
+}
+
+.player-summary{
+    display: none;
+}
+
+.player-title{
+    font-weight: bold;
+}
+
+.player-amount{
+    display: block;
+    text-align: center;
+}
+
+.extra-player{
+    display: none;
+}
+
+button{
+    border-radius: 10px;
+    background-color: #5CA4A9;
+    color: #104F55;
+}
+button:disabled{
+    display: none;
+}
+
+.card{
+    background-color: #CDDFDD;
+    margin: 20px;
+}
+
+input{
+    background-color: transparent;
+    border: 0px solid;
+}
+
+
+#summary-title{
+    text-align: center;
+}
+
+.diff-summary{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 2em;
+    margin-top: -15px;
+    flex-wrap: wrap;
+}
+
+#p1-summary, #p2-summary, #p3-summary,#p4-summary,#p5-summary,#p6-summary, #cpu-summary{
+    padding: 4em;
+}
+
+.next-round-container{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#footer{
+    text-align: center;
+}
