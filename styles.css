@@ -9,6 +9,21 @@ body{
     margin-bottom: 40px;
 }
 
+.instructions{
+    background-color: #6b9c96;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.instruction{
+    width: 150px;
+    padding: 3px;
+    text-align: center;
+    font-size: 15px;
+}
+
 .rounds{
     display: block;
     text-align: center;

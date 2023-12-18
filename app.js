@@ -180,6 +180,9 @@ guessButton.addEventListener("click", () => {
 
   console.log(guess);
 
+
+  
+
   //https://www.educative.io/answers/how-to-find-an-object-by-id-in-an-array-of-javascript-objects
   //used find method instead to get the key with the lowest value
   const object = guess.find(
