@@ -5,7 +5,6 @@ let fourPlayer = document.getElementById("four-player");
 let fivePlayer = document.getElementById("five-player");
 let sixPlayer = document.getElementById("six-player");
 
-
 //initialize scores
 let playerOneScore = 0;
 let playerTwoScore = 0;
@@ -24,7 +23,7 @@ let playerFiveTotalDifference = 0;
 let playerSixTotalDifference = 0;
 let computerTotalDifference = 0;
 
-//divs of players
+//player card
 let firstPlayer = document.getElementById("p1");
 let computerPlayer = document.getElementById("cpu");
 let secondPlayer = document.getElementById("p2");
@@ -32,6 +31,29 @@ let thirdPlayer = document.getElementById("p3");
 let fourthPlayer = document.getElementById("p4");
 let fifthPlayer = document.getElementById("p5");
 let sixthPlayer = document.getElementById("p6");
+
+
+function getName() {
+var playerOneName = document.getElementById("p1-name").value;
+document.getElementById("p1-summary-name").innerText = playerOneName;
+//table name
+//document.getElementById("p1-table-name").innerText = playerOneName;
+var playerTwoName = document.getElementById("p2-name").value;
+document.getElementById("p2-summary-name").innerText = playerTwoName;
+//document.getElementById("p2-table-name").innerText = playerTwoName;
+var playerThreeName = document.getElementById("p3-name").value;
+document.getElementById("p3-summary-name").innerText = playerThreeName;
+//document.getElementById("p3-table-name").innerText = playerThreeName;
+var playerFourName = document.getElementById("p4-name").value;
+document.getElementById("p4-summary-name").innerText = playerFourName;
+//document.getElementById("p4-table-name").innerText = playerFourName;
+var playerFiveName = document.getElementById("p5-name").value;
+document.getElementById("p5-summary-name").innerText = playerFiveName;
+//document.getElementById("p5-table-name").innerText = playerFiveName;
+var playerSixName = document.getElementById("p6-name").value;
+document.getElementById("p6-summary-name").innerText = playerSixName;
+//document.getElementById("p6-table-name").innerText = playerSixName;
+}
 
 //reset UI
 const resetUI = () => {
@@ -61,6 +83,8 @@ playerSixScore = 0;
 playerSixScoreDisplay.innerText = playerSixScore;
 computerScore = 0;
 computerScoreDisplay.innerText = computerScore;
+document.getElementById("target-number").innerText = "?";
+document.getElementById("computer-guess").innerText = "?";
 playerThreeTotalDifference = 0;
 playerFourTotalDifference = 0;
 playerFiveTotalDifference = 0;
@@ -68,6 +92,7 @@ playerSixTotalDifference = 0;
 computerTotalDifference = 0;
 nextRoundButton.setAttribute('disabled', true);
 guessButton.removeAttribute('disabled');
+hideInput();
 };
 
 //show player 2
@@ -90,10 +115,6 @@ const showTwo = () => {
   }
   playerOneTotalDifference = 0;
   playerTwoTotalDifference = 0;
-  // firstPlayer.style.width = "35em";
-  // firstPlayer.style.height = "11em";
-  // secondPlayer.style.width = "35em";
-  // secondPlayer.style.height = "11em";
   return true;
 };
 
@@ -116,7 +137,7 @@ const showCPU = () =>{
     totalDifference[i].innerHTML = 0;
   }
   playerOneTotalDifference = 0;
-  computerTotalDifference = 0
+  computerTotalDifference = 0;
   return true;
 }
 
@@ -161,7 +182,7 @@ const generateTarget = () => {
   return Math.floor(Math.random() * 101);
 };
 
-//update score
+//update score. determine winner
 const updateScore = winner => {
   if(winner === 'one'){
   playerOneWinnerDisplay.innerHTML = "You win!";
@@ -199,47 +220,53 @@ const advanceRound = () =>{
   currentRoundNumber++;
 }
 
-
 //source from https://stackoverflow.com/questions/18042133/check-if-input-is-number-or-letter-javascript
 //how to stop the round if a user inputs wrong value???
 const checkInput = () => {
-  let numbers = /^[0-9]+$/;
+  let numbers = /^0-9]+$/;
   let alphabet = /^[a-z]+$/;
-  if((!playerOneGuessInput.value.match(numbers) || playerOneGuessInput.value.match(alphabet))){
+  if((playerOneGuessInput.value.match(numbers) || playerOneGuessInput.value.match(alphabet))){
     window.alert("Please input a number between 1-100 Player 1");
   }
   if(playerOneGuessInput.value > 100){
-    window.alert("Only enter numbers 0 - 100 Player 1");
+    window.alert("Values over 100 is not allowed Player 1");
+    // throw '';
+    throw new Error("Invalid input greater than 100!")
   }
-  if((!playerTwoGuessInput.value.match(numbers) || playerTwoGuessInput.value.match(alphabet)) && p2.style.display === "block"){
+  if((playerTwoGuessInput.value.match(numbers) || playerTwoGuessInput.value.match(alphabet)) && p2.style.display === "block"){
     window.alert("Please input a number between 1-100 Player 2");
   }
   if(playerTwoGuessInput.value > 100){
-    window.alert("Only enter numbers 0 - 100 Player 2");
+    window.alert("Values over 100 is not allowed Player 2");
+    throw new Error("Invalid input greater than 100!")
   }
-  if((!playerThreeGuessInput.value.match(numbers) || playerThreeGuessInput.value.match(alphabet))  && p3.style.display === "block"){
+  if((playerThreeGuessInput.value.match(numbers) || playerThreeGuessInput.value.match(alphabet))  && p3.style.display === "block"){
     window.alert("Please input a number between 1-100 Player 3");
   }
   if(playerThreeGuessInput.value > 100){
-    window.alert("Only enter numbers 0 - 100 Player 3");
+    window.alert("Values over 100 is not allowed Player 3");
+    throw new Error("Invalid input greater than 100!")
   }
-  if((!playerFourGuessInput.value.match(numbers) || playerFourGuessInput.value.match(alphabet))  && p4.style.display === "block"){
+  if((playerFourGuessInput.value.match(numbers) || playerFourGuessInput.value.match(alphabet))  && p4.style.display === "block"){
     window.alert("Please input a number between 1-100 Player 4");
   }
   if(playerFourGuessInput.value > 100){
-    window.alert("Only enter numbers 0 - 100 Player 4");
+    window.alert("Values over 100 is not allowed Player 4");
+    throw new Error("Invalid input greater than 100!")
   }
-  if((!playerFiveGuessInput.value.match(numbers) || playerFiveGuessInput.value.match(alphabet))  && p5.style.display === "block"){
+  if((playerFiveGuessInput.value.match(numbers) || playerFiveGuessInput.value.match(alphabet))  && p5.style.display === "block"){
     window.alert("Please input a number between 1-100 Player 5");
   }
   if(playerFiveGuessInput.value > 100){
-    window.alert("Only enter numbers 0 - 100 Player 5");
+    window.alert("Values over 100 is not allowed Player 5");
+    throw new Error("Invalid input greater than 100!")
   }
-  if((!playerSixGuessInput.value.match(numbers) || playerSixGuessInput.value.match(alphabet))  && p6.style.display === "block"){
+  if((playerSixGuessInput.value.match(numbers) || playerSixGuessInput.value.match(alphabet))  && p6.style.display === "block"){
     window.alert("Please input a number between 1-100 Player 6");
   }
   if(playerSixGuessInput.value > 100){
-    window.alert("Only enter numbers 0 - 100 Player 6");
+    window.alert("Values over 100 is not allowed Player 6");
+    throw new Error("Invalid input greater than 100!")
   }
 }
 

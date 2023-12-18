@@ -58,7 +58,7 @@
             id="p1"
           >
             <div class="card-body">
-              <input type="text" class="player-title" placeholder="Player 1" />
+              <input type="text" class="player-title" id ="p1-name" value="Player 1" />
               <p class="score-label">
                 Score: <span id="player1-score">0</span>
               </p>
@@ -85,7 +85,7 @@
             id="cpu"
           >
             <div class="card-body">
-              <h5 class="player-title">CPU</h5>
+              <h5 class="player-title">Computer</h5>
               <p class="score-label">
                 Score: <span id="computer-score">0</span>
               </p>
@@ -105,7 +105,7 @@
             id="p2"
           >
             <div class="card-body">
-              <input type="text" class="player-title" placeholder="Player 2" />
+              <input type="text" class="player-title" id ="p2-name" value="Player 2" />
               <p class="score-label">
                 Score: <span id="player2-score">0</span>
               </p>
@@ -131,7 +131,7 @@
             id="p3"
           >
             <div class="card-body">
-              <input type="text" class="player-title" placeholder="Player 3" />
+              <input type="text" class="player-title" id ="p3-name" value="Player 3" />
               <p class="score-label">
                 Score: <span id="player3-score">0</span>
               </p>
@@ -157,7 +157,7 @@
             id="p4"
           >
             <div class="card-body">
-              <input type="text" class="player-title" placeholder="Player 4" />
+              <input type="text" class="player-title" id ="p4-name" value="Player 4" />
               <p class="score-label">
                 Score: <span id="player4-score">0</span>
               </p>
@@ -183,7 +183,7 @@
             id="p5"
           >
             <div class="card-body">
-              <input type="text" class="player-title" placeholder="Player 5" />
+              <input type="text" class="player-title" id ="p5-name" value="Player 5" />
               <p class="score-label">
                 Score: <span id="player5-score">0</span>
               </p>
@@ -209,7 +209,7 @@
             id="p6"
           >
             <div class="card-body">
-              <input type="text" class="player-title" placeholder="Player 6" />
+              <input type="text" class="player-title" id ="p6-name" value="Player 6" />
               <p class="score-label">
                 Score: <span id="player6-score">0</span>
               </p>
@@ -233,27 +233,27 @@
             <h5 id="summary-title">Cumulative Difference Summary</h5>
             <div class="diff-summary">
               <p id="p1-summary">
-                Player 1
+                <span id="p1-summary-name">Player 1</span> 
                 <br><span class="total-difference" id="cumu-difference-1"></span>
               </p>
               <p class="player-summary" id="p2-summary">
-                Player 2
+                <span id="p2-summary-name">Player 2</span>
                 <br><span class="total-difference" id="cumu-difference-2"></span>
               </p>
               <p class="player-summary" id="p3-summary">
-                Player 3
+                <span id="p3-summary-name">Player 3</span>
                 <br><span class="total-difference" id="cumu-difference-3"></span>
               </p>
               <p class="player-summary" id="p4-summary">
-                Player 4
+                <span id="p4-summary-name">Player 4</span>
                 <br><span class="total-difference" id="cumu-difference-4"></span>
               </p>
               <p class="player-summary" id="p5-summary">
-                Player 5
+                <span id="p5-summary-name">Player 5</span>
                 <br><span class="total-difference" id="cumu-difference-5"></span>
               </p>
               <p class="player-summary" id="p6-summary">
-                Player 6
+                <span id="p6-summary-name">Player 6</span>
                 <br><span class="total-difference" id="cumu-difference-6"></span>
               </p>
               <p class="player-summary" id="cpu-summary">
@@ -267,18 +267,18 @@
           </div>
         </div>
         <!-- Difference Table -->
-        <div id="diff-table">
+        <!-- <div id="diff-table">
           <table>
             <tr>
               <th>Round</th>
               <th>1</th>
             </tr>
             <tr>
-              <td>Player 1</td>
-              <td></td>
+              <td id="p1-table-name">Player 1</td>
+              <td id="player1-difference-table"></span></td>
             </tr>
           </table>
-        </div>
+        </div> -->
         <!-- Submit Guess and Next Round button-->
         <div class="next-round-container">
           <button class="button" id="guess">Submit</button>

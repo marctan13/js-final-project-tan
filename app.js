@@ -56,29 +56,36 @@ let playerSixSummary = document.getElementById("p6-summary");
 let computerSummary = document.getElementById("cpu-summary");
 
 //score difference
-let difference = document.getElementsByClassName("difference")
-let playerOneDifferenceDisplay = document.getElementById("player1-difference");
-let playerTwoDifferenceDisplay = document.getElementById("player2-difference");
-let playerThreeDifferenceDisplay = document.getElementById("player3-difference");
-let playerFourDifferenceDisplay = document.getElementById("player4-difference");
-let playerFiveDifferenceDisplay = document.getElementById("player5-difference");
-let playerSixDifferenceDisplay = document.getElementById("player6-difference");
-let computerDifferenceDisplay = document.getElementById("computer-difference");
-
-//cumulative difference
-let playerOneCumulativeDifference = document.getElementById("cumu-difference-1");
-let playerTwoCumulativeDifference = document.getElementById("cumu-difference-2");
-let playerThreeCumulativeDifference = document.getElementById("cumu-difference-3");
-let playerFourCumulativeDifference = document.getElementById("cumu-difference-4");
-let playerFiveCumulativeDifference = document.getElementById("cumu-difference-5");
-let playerSixCumulativeDifference = document.getElementById("cumu-difference-6");
-let computerCumulativeDifference = document.getElementById("cumu-difference-computer");
+let difference = document.getElementsByClassName("difference");
 
 let diffSummary = document.getElementsByClassName("diff-summary");
 let totalDifference = document.getElementsByClassName("total-difference");
 
 //round count
 let currentRoundNumber = 1;
+
+class Player {
+  constructor(player, input) {
+    this.player = player;
+    this.input = input;
+  }
+
+  getDifference() {
+    return Math.abs(target - this.input);
+  }
+
+  differenceDisplay() {
+    return "The difference is " + Math.abs(target - this.input);
+  }
+}
+
+//events to reflect name change on name fields
+document.getElementById("p1-name").addEventListener("keyup", getName);
+document.getElementById("p2-name").addEventListener("keyup", getName);
+document.getElementById("p3-name").addEventListener("keyup", getName);
+document.getElementById("p4-name").addEventListener("keyup", getName);
+document.getElementById("p5-name").addEventListener("keyup", getName);
+document.getElementById("p6-name").addEventListener("keyup", getName);
 
 //submit event
 guessButton.addEventListener("click", () => {
@@ -95,165 +102,166 @@ guessButton.addEventListener("click", () => {
 
   // Make a random 'computer guess'
   const computerGuess = Math.floor(Math.random() * 101);
+  const computer = new Player("computer", computerGuess);
+  //defining a class for players to inherit
 
-  //get difference of player one 
-  const playerOneDifference = Math.abs(currentPlayerOneGuess - target);
+  // class Player {
+  //   constructor(player, input) {
+  //     this.player = player;
+  //     this.input = input;
+  //   }
 
-  //Difference
-  let guess = [{
-    player:"one",
-    difference: playerOneDifference
-  }]
+  //   getDifference() {
+  //     return Math.abs(target - this.input);
+  //   }
 
-  //if the player card is active, their inputs will be pushed to the declared array above
-  if(secondPlayer.style.display === "block"){
-    playerTwoDifference = Math.abs(currentPlayerTwoGuess - target);
-    guess.push({player: "two", difference: playerTwoDifference})
-  }
-  if(thirdPlayer.style.display === "block"){
-    playerThreeDifference = Math.abs(currentPlayerThreeGuess - target);
-    guess.push({player: "three", difference: playerThreeDifference})
-  }
-  if(fourthPlayer.style.display === "block"){
-    playerFourDifference = Math.abs(currentPlayerFourGuess - target);
-    guess.push({player: "four", difference: playerFourDifference})
-  }
-  if(fifthPlayer.style.display === "block"){
-    playerFiveDifference = Math.abs(currentPlayerFiveGuess - target);
-    guess.push({player: "five", difference: playerFiveDifference})
-  }
-  if(sixthPlayer.style.display === "block"){
-    playerSixDifference = Math.abs(currentPlayerSixGuess - target);
-    guess.push({player: "six", difference: playerSixDifference})
-  }
-  if(computerPlayer.style.display === "block"){
-    computerDifference = Math.abs(computerGuess - target);
-    guess.push({player: "computer", difference: computerDifference})
-  }
+  //   differenceDisplay() {
+  //     return "The difference is " + Math.abs(target - this.input);
+  //   }
+  // }
 
+  const playerOne = new Player("one", playerOneGuessInput.value);
+  const playerTwo = new Player("two", playerTwoGuessInput.value);
+  const playerThree = new Player("three", playerThreeGuessInput.value);
+  const playerFour = new Player("four", playerFourGuessInput.value);
+  const playerFive = new Player("five", playerFiveGuessInput.value);
+  const playerSix = new Player("six", playerSixGuessInput.value);
+  // const computer = new Player("computer", computerGuess);
 
-  /*
-  const computerDifference = Math.abs(computerGuess - target);
-  const playerTwoDifference = Math.abs(currentPlayerTwoGuess - target);
-  const playerThreeDifference = Math.abs(currentPlayerThreeGuess - target);
-  const playerFourDifference = Math.abs(currentPlayerFourGuess - target);
-  const playerFiveDifference = Math.abs(currentPlayerFiveGuess - target);
-  const playerSixDifference = Math.abs(currentPlayerSixGuess - target);
+  //INPUT ROUND DIFFERENCE TO TABLE
+  // let playerOneRoundDIfference = document.getElementById(
+  //   "player1-difference-table"
+  // );
+  // playerOneRoundDIfference.innerText = playerOne.getDifference();
 
+  //add rows to table depending on players
+  // function twoRow() {
+  //   var table = document.getElementById("diff-table");
+  //   var tr = document.createElement("tr");
+  //   var th = document.createElement("th");
+  //   var td = document.createElement("td");
+  //   td.innerText = playerTwo.getDifference();
+  //   th.innerText = "Player 2";
+  //   tr.appendChild(th);
+  //   tr.appendChild(td);
+  //   table.appendChild(tr);
+  // }
 
-  const guess = [
+  // function ThreeRow() {
+  //   twoRow();
+  // }
+
+  let guess = [
     {
       player: "one",
-      difference: playerOneDifference,
+      difference: playerOne.getDifference(),
     },
-    {
-      player: "two",
-      difference: playerTwoDifference,
-    },
-    {
-      player: "three",
-      difference: playerThreeDifference,
-    },
-    {
-      player: "four",
-      difference: playerFourDifference,
-    },
-    {
-      player: "five",
-      difference: playerFiveDifference,
-    },
-    {
-      player: "six",
-      difference: playerSixDifference,
-    },
-    {
-      player: "computer",
-      difference: computerDifference,
-    }
   ];
-*/
+  if (secondPlayer.style.display === "block") {
+    guess.push({ player: "two", difference: playerTwo.getDifference() });
+    //twoRow();
+  }
+  if (thirdPlayer.style.display === "block") {
+    guess.push({ player: "three", difference: playerThree.getDifference() });
+  }
 
-  //source to get lowest value in object 
-  //https://javascript.plainenglish.io/how-to-get-min-or-max-value-of-a-property-in-a-javascript-array-of-objects-3fdf318f2019
-  //get lowest value in object
-  /*
-  const min = Math.min(...guess.map((value) => value.difference));
-  const winner = Object.keys(Math.min(...guess.map((value) => value.difference)));
-  console.log("Minimum number: " + min);
-  console.log("Winner is: " + winner);
-  */
+  if (fourthPlayer.style.display === "block") {
+    guess.push({ player: "four", difference: playerFour.getDifference() });
+  }
+  if (fifthPlayer.style.display === "block") {
+    guess.push({ player: "five", difference: playerFive.getDifference() });
+  }
+  if (sixthPlayer.style.display === "block") {
+    guess.push({ player: "six", difference: playerSix.getDifference() });
+  }
+  if (computerPlayer.style.display === "block") {
+    guess.push({ player: "computer", difference: computer.getDifference() });
+  }
+
   console.log(guess);
- 
 
-//https://www.educative.io/answers/how-to-find-an-object-by-id-in-an-array-of-javascript-objects
-//used find method instead to get the key with the lowest value
-const object = guess.find(obj => obj.difference === Math.min(...guess.map((value) => value.difference)));
-//winning player of the round
-let winner = object.player
-console.log("Winner is: Player " + winner);
+  //https://www.educative.io/answers/how-to-find-an-object-by-id-in-an-array-of-javascript-objects
+  //used find method instead to get the key with the lowest value
+  const object = guess.find(
+    (obj) =>
+      obj.difference === Math.min(...guess.map((value) => value.difference))
+  );
 
+  //winning player of the round
+  let winner = object.player;
+  console.log("Winner is: Player " + winner);
 
-updateScore(winner);
+  updateScore(winner);
 
-//assigning the value of 0 to the elements
-playerOneScoreDisplay.innerText = playerOneScore;
-playerTwoScoreDisplay.innerText = playerTwoScore;
-playerThreeScoreDisplay.innerText = playerThreeScore;
-playerFourScoreDisplay.innerText = playerFourScore;
-playerFiveScoreDisplay.innerText = playerFiveScore;
-playerSixScoreDisplay.innerText = playerSixScore;
-computerScoreDisplay.innerText = computerScore;
+  //assigning the value of 0 to the elements
+  playerOneScoreDisplay.innerText = playerOneScore;
+  playerTwoScoreDisplay.innerText = playerTwoScore;
+  playerThreeScoreDisplay.innerText = playerThreeScore;
+  playerFourScoreDisplay.innerText = playerFourScore;
+  playerFiveScoreDisplay.innerText = playerFiveScore;
+  playerSixScoreDisplay.innerText = playerSixScore;
+  computerScoreDisplay.innerText = computerScore;
 
-//adding cumulative difference throughout each rounds
-playerOneTotalDifference = playerOneTotalDifference + playerOneDifference
-playerTwoTotalDifference = playerTwoTotalDifference + playerTwoDifference
-playerThreeTotalDifference = playerThreeTotalDifference + playerThreeDifference
-playerFourTotalDifference = playerFourTotalDifference + playerFourDifference
-playerFiveTotalDifference = playerFiveTotalDifference + playerFiveDifference
-playerSixTotalDifference = playerSixTotalDifference + playerSixDifference
-computerTotalDifference = computerTotalDifference + computerDifference
+  //adding cumulative difference throughout each rounds
+  playerOneTotalDifference =
+    playerOneTotalDifference + playerOne.getDifference();
+  playerTwoTotalDifference =
+    playerTwoTotalDifference + playerTwo.getDifference();
+  playerThreeTotalDifference =
+    playerThreeTotalDifference + playerThree.getDifference();
+  playerFourTotalDifference =
+    playerFourTotalDifference + playerFour.getDifference();
+  playerFiveTotalDifference =
+    playerFiveTotalDifference + playerFive.getDifference();
+  playerSixTotalDifference =
+    playerSixTotalDifference + playerSix.getDifference();
+  computerTotalDifference = computerTotalDifference + computer.getDifference();
 
-playerOneCumulativeDifference.innerText = playerOneTotalDifference
-playerTwoCumulativeDifference.innerText = playerTwoTotalDifference
-playerThreeCumulativeDifference.innerText = playerThreeTotalDifference
-playerFourCumulativeDifference.innerText = playerFourTotalDifference
-playerFiveCumulativeDifference.innerText = playerFiveTotalDifference
-playerSixCumulativeDifference.innerText = playerSixTotalDifference
-computerCumulativeDifference.innerText = computerTotalDifference
-
-
+  document.getElementById("cumu-difference-1").innerText =
+    playerOneTotalDifference;
+  document.getElementById("cumu-difference-2").innerText =
+    playerTwoTotalDifference;
+  document.getElementById("cumu-difference-3").innerText =
+    playerThreeTotalDifference;
+  document.getElementById("cumu-difference-4").innerText =
+    playerFourTotalDifference;
+  document.getElementById("cumu-difference-5").innerText =
+    playerFiveTotalDifference;
+  document.getElementById("cumu-difference-6").innerText =
+    playerSixTotalDifference;
+  document.getElementById("cumu-difference-computer").innerText =
+    computerTotalDifference;
 
   // Display the computer guess and the target
   computerGuessDisplay.innerText = computerGuess;
   targetNumberDisplay.innerText = target;
 
   //display difference from the target
-  playerOneDifferenceDisplay.innerText =
-    "Difference is: " + playerOneDifference;
-  computerDifferenceDisplay.innerText = 
-  "Difference is: " + computerDifference;
-  playerTwoDifferenceDisplay.innerText =
-    "Difference is: " + playerTwoDifference;
-  playerThreeDifferenceDisplay.innerText =
-    "Difference is: " + playerThreeDifference;
-  playerFourDifferenceDisplay.innerText =
-    "Difference is: " + playerFourDifference;
-  playerFiveDifferenceDisplay.innerText =
-    "Difference is: " + playerFiveDifference;
-  playerSixDifferenceDisplay.innerText =
-    "Difference is: " + playerSixDifference;
+  document.getElementById("player1-difference").innerText =
+    playerOne.differenceDisplay();
+  document.getElementById("computer-difference").innerText =
+    computer.differenceDisplay();
+  document.getElementById("player2-difference").innerText =
+    playerTwo.differenceDisplay();
+  document.getElementById("player3-difference").innerText =
+    playerThree.differenceDisplay();
+  document.getElementById("player4-difference").innerText =
+    playerFour.differenceDisplay();
+  document.getElementById("player5-difference").innerText =
+    playerFive.differenceDisplay();
+  document.getElementById("player6-difference").innerText =
+    playerSix.differenceDisplay();
 
-    showInput();
+  showInput();
 
-    //switch the disabled state of the two buttons alternatively
-    guessButton.setAttribute('disabled', true)
-    nextRoundButton.removeAttribute('disabled');
-}
-);
+  //switch the disabled state of the two buttons alternatively
+  guessButton.setAttribute("disabled", true);
+  nextRoundButton.removeAttribute("disabled");
+});
 //end of event listener
 
 //next round button event listener
-nextRoundButton.addEventListener('click', () =>{
+nextRoundButton.addEventListener("click", () => {
   //increase round number
   advanceRound();
   hideInput();
@@ -261,22 +269,21 @@ nextRoundButton.addEventListener('click', () =>{
   roundNumberDisplay.innerText = currentRoundNumber;
 
   //set correct disabled state for the buttons
-  nextRoundButton.setAttribute('disabled', true);
-  guessButton.removeAttribute('disabled');
+  nextRoundButton.setAttribute("disabled", true);
+  guessButton.removeAttribute("disabled");
 
   //reset the guess input box and the target number display
-  computerGuessDisplay.innerText = '?';
-  computerWinnerDisplay.innerText = '';
-  targetNumberDisplay.innerText = '?';
+  computerGuessDisplay.innerText = "?";
+  computerWinnerDisplay.innerText = "";
+  targetNumberDisplay.innerText = "?";
   //for loop to iterate through array of classes to reset value
-  for(let i=0; i < winnerDisplay.length; i++){
-    winnerDisplay[i].innerHTML = '';
+  for (let i = 0; i < winnerDisplay.length; i++) {
+    winnerDisplay[i].innerHTML = "";
   }
-  for(let i=0; i < differenceDisplay.length; i++){
-    differenceDisplay[i].innerHTML = '';
+  for (let i = 0; i < differenceDisplay.length; i++) {
+    differenceDisplay[i].innerHTML = "";
   }
-  for(let i=0; i < guessInput.length; i++){
-    guessInput[i].value = '';
+  for (let i = 0; i < guessInput.length; i++) {
+    guessInput[i].value = "";
   }
-}
-)
+});
