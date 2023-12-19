@@ -6,7 +6,7 @@ body{
 #title{
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    margin: 20px 0px;
 }
 
 .instructions{
@@ -27,7 +27,7 @@ body{
 .rounds{
     display: block;
     text-align: center;
-    margin: 20px;
+    padding: 5px;
     font-size: 32px;
 }
 
