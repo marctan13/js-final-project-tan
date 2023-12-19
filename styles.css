@@ -25,10 +25,14 @@ body{
 }
 
 .rounds{
-    display: block;
-    text-align: center;
-    padding: 5px;
-    font-size: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 3em;
+        margin-right: 5em;
+        float: right;
+        font-size: 32px;
+
 }
 
 /* to remove arrows in input field */

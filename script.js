@@ -281,5 +281,3 @@ const hideInput = () => {
     guessInput[i].type = 'password';
   }
 }
-
-//tiebreaker if there is 2 or more players with the same difference
