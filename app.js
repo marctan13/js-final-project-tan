@@ -103,22 +103,6 @@ guessButton.addEventListener("click", () => {
   // Make a random 'computer guess'
   const computerGuess = Math.floor(Math.random() * 101);
   const computer = new Player("computer", computerGuess);
-  //defining a class for players to inherit
-
-  // class Player {
-  //   constructor(player, input) {
-  //     this.player = player;
-  //     this.input = input;
-  //   }
-
-  //   getDifference() {
-  //     return Math.abs(target - this.input);
-  //   }
-
-  //   differenceDisplay() {
-  //     return "The difference is " + Math.abs(target - this.input);
-  //   }
-  // }
 
   const playerOne = new Player("one", playerOneGuessInput.value);
   const playerTwo = new Player("two", playerTwoGuessInput.value);
@@ -180,23 +164,56 @@ guessButton.addEventListener("click", () => {
 
   console.log(guess);
 
-
-  
-
   //https://www.educative.io/answers/how-to-find-an-object-by-id-in-an-array-of-javascript-objects
   //used find method instead to get the key with the lowest value
+  //find first winner
   const object = guess.find(
     (obj) =>
       obj.difference === Math.min(...guess.map((value) => value.difference))
   );
 
-  //winning player of the round
+  //get other winners with same min difference
+  let winners = guess.filter((value) => object.difference === value.difference);
+  let otherWinnerScore = winners.splice(1);
+  let otherWinners = [];
+  otherWinnerScore.forEach((element) => otherWinners.push(element.player));
+  console.log(otherWinners);
+  //loop through array of other winners
+  for (let i = 0; i < otherWinners.length; i++) {
+    if (otherWinners[i] === "two") {
+      playerTwoWinnerDisplay.innerHTML = "You win!";
+      playerTwoScore++;
+    }
+    if (otherWinners[i] === "three") {
+      playerThreeWinnerDisplay.innerHTML = "You win!";
+      playerThreeScore++;
+    }
+    if (otherWinners[i] === "four") {
+      playerFourWinnerDisplay.innerHTML = "You win!";
+      playerFourScore++;
+    }
+    if (otherWinners[i] === "five") {
+      playerFiveWinnerDisplay.innerHTML = "You win!";
+      playerFiveScore++;
+    }
+    if (otherWinners[i] === "six") {
+      playerSixWinnerDisplay.innerHTML = "You win!";
+      playerSixScore++;
+    }
+    if (otherWinners[i] === "computer") {
+      computerWinnerDisplay.innerHTML = "You win!";
+      computerScore++;
+    }
+  }
+
+  console.log(object);
+  //winning player/s of the round
   let winner = object.player;
   console.log("Winner is: Player " + winner);
 
   updateScore(winner);
 
-  //assigning the value of 0 to the elements
+  //assigning the score value to the elements
   playerOneScoreDisplay.innerText = playerOneScore;
   playerTwoScoreDisplay.innerText = playerTwoScore;
   playerThreeScoreDisplay.innerText = playerThreeScore;
