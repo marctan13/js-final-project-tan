@@ -1,5 +1,20 @@
 let target;
 
+class Player {
+  constructor(player, input) {
+    this.player = player;
+    this.input = input;
+  }
+
+  getDifference() {
+    return Math.abs(target - this.input);
+  }
+
+  differenceDisplay() {
+    return "The difference is " + Math.abs(target - this.input);
+  }
+}
+
 const guessButton = document.getElementById("guess");
 const nextRoundButton = document.getElementById("next-round");
 
@@ -64,20 +79,6 @@ let totalDifference = document.getElementsByClassName("total-difference");
 //round count
 let currentRoundNumber = 1;
 
-class Player {
-  constructor(player, input) {
-    this.player = player;
-    this.input = input;
-  }
-
-  getDifference() {
-    return Math.abs(target - this.input);
-  }
-
-  differenceDisplay() {
-    return "The difference is " + Math.abs(target - this.input);
-  }
-}
 
 //events to reflect name change on name fields
 document.getElementById("p1-name").addEventListener("keyup", getName);
@@ -173,11 +174,11 @@ guessButton.addEventListener("click", () => {
   );
 
   //get other winners with same min difference
-  let winners = guess.filter((value) => object.difference === value.difference);
-  let otherWinnerScore = winners.splice(1);
+  const winners = guess.filter((value) => object.difference === value.difference);
+  const otherWinnerScore = winners.splice(1);
   let otherWinners = [];
   otherWinnerScore.forEach((element) => otherWinners.push(element.player));
-  console.log(otherWinners);
+  console.log("Other winner: " + otherWinners);
   //loop through array of other winners
   for (let i = 0; i < otherWinners.length; i++) {
     if (otherWinners[i] === "two") {
@@ -206,10 +207,9 @@ guessButton.addEventListener("click", () => {
     }
   }
 
-  console.log(object);
+  //console.log(object);
   //winning player/s of the round
   let winner = object.player;
-  console.log("Winner is: Player " + winner);
 
   updateScore(winner);
 

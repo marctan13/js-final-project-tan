@@ -70,7 +70,7 @@ for(let i=0; i < winnerDisplay.length; i++){
 }
 roundNumberDisplay.innerText = 1;
 playerOneScore = 0;
-playerOneScoreDisplay.innerText = playerOneScore
+playerOneScoreDisplay.innerText = playerOneScore;
 playerTwoScore = 0;
 playerTwoScoreDisplay.innerText = playerTwoScore;
 playerThreeScore = 0;
@@ -187,31 +187,24 @@ const updateScore = winner => {
   if(winner === 'one'){
   playerOneWinnerDisplay.innerHTML = "You win!";
   playerOneScore++;
-  console.log("current score: " + playerOneScore);
 } else if(winner === 'two'){
   playerTwoWinnerDisplay.innerHTML = "You win!";
   playerTwoScore++;
-  console.log("current score: " + playerTwoScore);
 } else if(winner === 'three'){
   playerThreeWinnerDisplay.innerHTML = "You win!";
   playerThreeScore++;
-  console.log("current score: " + playerThreeScore);
 } else if(winner === 'four'){
   playerFourWinnerDisplay.innerHTML = "You win!";
   playerFourScore++;
-  console.log("current score: " + playerFourScore);
 } else if(winner === 'five'){
   playerFiveWinnerDisplay.innerHTML = "You win!";
   playerFiveScore++;
-  console.log("current score: " + playerFiveScore);
 } else if(winner === 'six'){
   playerSixWinnerDisplay.innerHTML = "You win!";
   playerSixScore++;
-  console.log("current score: " + playerSixScore);
 } else{
     computerWinnerDisplay.innerHTML = "You win!";
     computerScore++;
-    console.log("current score: " + computerScore);
 }
 }
 
