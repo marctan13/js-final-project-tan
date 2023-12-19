@@ -15,6 +15,7 @@ class Player {
   }
 }
 
+//submit and next round button
 const guessButton = document.getElementById("guess");
 const nextRoundButton = document.getElementById("next-round");
 

@@ -32,11 +32,10 @@ let fourthPlayer = document.getElementById("p4");
 let fifthPlayer = document.getElementById("p5");
 let sixthPlayer = document.getElementById("p6");
 
-
+//reflects changes on player name
 function getName() {
 var playerOneName = document.getElementById("p1-name").value;
 document.getElementById("p1-summary-name").innerText = playerOneName;
-//table name
 //document.getElementById("p1-table-name").innerText = playerOneName;
 var playerTwoName = document.getElementById("p2-name").value;
 document.getElementById("p2-summary-name").innerText = playerTwoName;
@@ -85,6 +84,8 @@ computerScore = 0;
 computerScoreDisplay.innerText = computerScore;
 document.getElementById("target-number").innerText = "?";
 document.getElementById("computer-guess").innerText = "?";
+playerOneTotalDifference = 0;
+playerTwoTotalDifference = 0;
 playerThreeTotalDifference = 0;
 playerFourTotalDifference = 0;
 playerFiveTotalDifference = 0;
@@ -113,8 +114,6 @@ const showTwo = () => {
   for(let i=0; i < totalDifference.length; i++){
     totalDifference[i].innerHTML = 0;
   }
-  playerOneTotalDifference = 0;
-  playerTwoTotalDifference = 0;
   return true;
 };
 
@@ -136,8 +135,6 @@ const showCPU = () =>{
   for(let i=0; i < totalDifference.length; i++){
     totalDifference[i].innerHTML = 0;
   }
-  playerOneTotalDifference = 0;
-  computerTotalDifference = 0;
   return true;
 }
 
@@ -187,6 +184,7 @@ const updateScore = winner => {
   if(winner === 'one'){
   playerOneWinnerDisplay.innerHTML = "You win!";
   playerOneScore++;
+
 } else if(winner === 'two'){
   playerTwoWinnerDisplay.innerHTML = "You win!";
   playerTwoScore++;
