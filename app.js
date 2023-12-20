@@ -82,9 +82,9 @@ document.getElementById("p6-name").addEventListener("keyup", getName);
 //submit event
 guessButton.addEventListener("click", () => {
   checkInput();
+
   // Generate the target value
   target = generateTarget();
-
   showInput();
 
   //switch the disabled state of the two buttons alternatively
