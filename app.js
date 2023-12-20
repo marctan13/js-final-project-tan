@@ -53,7 +53,6 @@ let computerWinnerDisplay = document.getElementById("winner-computer");
 let differenceDisplay = document.getElementsByClassName("difference");
 let winnerDisplay = document.getElementsByClassName("winner");
 
-
 //player summary
 let playerOneSummary = document.getElementById("p1-summary");
 let playerTwoSummary = document.getElementById("p2-summary");
@@ -71,7 +70,6 @@ let totalDifference = document.getElementsByClassName("total-difference");
 
 //round count
 let currentRoundNumber = 1;
-
 
 //events to reflect name change on name fields
 document.getElementById("p1-name").addEventListener("keyup", getName);
@@ -128,6 +126,25 @@ guessButton.addEventListener("click", () => {
   // function ThreeRow() {
   //   twoRow();
   // }
+  // Display the computer guess and the target
+  computerGuessDisplay.innerText = computerGuess;
+  targetNumberDisplay.innerText = target;
+
+  //display difference from the target
+  document.getElementById("player1-difference").innerText =
+    playerOne.differenceDisplay();
+  document.getElementById("computer-difference").innerText =
+    computer.differenceDisplay();
+  document.getElementById("player2-difference").innerText =
+    playerTwo.differenceDisplay();
+  document.getElementById("player3-difference").innerText =
+    playerThree.differenceDisplay();
+  document.getElementById("player4-difference").innerText =
+    playerFour.differenceDisplay();
+  document.getElementById("player5-difference").innerText =
+    playerFive.differenceDisplay();
+  document.getElementById("player6-difference").innerText =
+    playerSix.differenceDisplay();
 
   let guess = [
     {
@@ -167,7 +184,9 @@ guessButton.addEventListener("click", () => {
   );
 
   //get other winners with same min difference
-  const winners = guess.filter((value) => object.difference === value.difference);
+  const winners = guess.filter(
+    (value) => object.difference === value.difference
+  );
   const otherWinnerScore = winners.splice(1);
   let otherWinners = [];
   otherWinnerScore.forEach((element) => otherWinners.push(element.player));
@@ -244,26 +263,6 @@ guessButton.addEventListener("click", () => {
     playerSixTotalDifference;
   document.getElementById("cumu-difference-computer").innerText =
     computerTotalDifference;
-
-  // Display the computer guess and the target
-  computerGuessDisplay.innerText = computerGuess;
-  targetNumberDisplay.innerText = target;
-
-  //display difference from the target
-  document.getElementById("player1-difference").innerText =
-    playerOne.differenceDisplay();
-  document.getElementById("computer-difference").innerText =
-    computer.differenceDisplay();
-  document.getElementById("player2-difference").innerText =
-    playerTwo.differenceDisplay();
-  document.getElementById("player3-difference").innerText =
-    playerThree.differenceDisplay();
-  document.getElementById("player4-difference").innerText =
-    playerFour.differenceDisplay();
-  document.getElementById("player5-difference").innerText =
-    playerFive.differenceDisplay();
-  document.getElementById("player6-difference").innerText =
-    playerSix.differenceDisplay();
 
   showInput();
 

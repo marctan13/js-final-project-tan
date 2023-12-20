@@ -207,7 +207,7 @@ const checkInput = () => {
   let numbers = /^0-9]+$/;
   let alphabet = /^[a-z]+$/;
   if((playerOneGuessInput.value.match(numbers) || playerOneGuessInput.value.match(alphabet))){
-    window.alert("Please input a number between 1-100 Player 1");
+    window.alert("Letters not allowed. Please input a number between 1-100 Player 1");
   }
   if(playerOneGuessInput.value > 100){
     window.alert("Values over 100 is not allowed Player 1");
@@ -215,35 +215,35 @@ const checkInput = () => {
     throw new Error("Invalid input greater than 100!")
   }
   if((playerTwoGuessInput.value.match(numbers) || playerTwoGuessInput.value.match(alphabet)) && p2.style.display === "block"){
-    window.alert("Please input a number between 1-100 Player 2");
+    window.alert("Letters not allowed. Please input a number between 1-100 Player 2");
   }
   if(playerTwoGuessInput.value > 100){
     window.alert("Values over 100 is not allowed Player 2");
     throw new Error("Invalid input greater than 100!")
   }
   if((playerThreeGuessInput.value.match(numbers) || playerThreeGuessInput.value.match(alphabet))  && p3.style.display === "block"){
-    window.alert("Please input a number between 1-100 Player 3");
+    window.alert("Letters not allowed. Please input a number between 1-100 Player 3");
   }
   if(playerThreeGuessInput.value > 100){
     window.alert("Values over 100 is not allowed Player 3");
     throw new Error("Invalid input greater than 100!")
   }
   if((playerFourGuessInput.value.match(numbers) || playerFourGuessInput.value.match(alphabet))  && p4.style.display === "block"){
-    window.alert("Please input a number between 1-100 Player 4");
+    window.alert("Letters not allowed. Please input a number between 1-100 Player 4");
   }
   if(playerFourGuessInput.value > 100){
     window.alert("Values over 100 is not allowed Player 4");
     throw new Error("Invalid input greater than 100!")
   }
   if((playerFiveGuessInput.value.match(numbers) || playerFiveGuessInput.value.match(alphabet))  && p5.style.display === "block"){
-    window.alert("Please input a number between 1-100 Player 5");
+    window.alert("Letters not allowed. Please input a number between 1-100 Player 5");
   }
   if(playerFiveGuessInput.value > 100){
     window.alert("Values over 100 is not allowed Player 5");
     throw new Error("Invalid input greater than 100!")
   }
   if((playerSixGuessInput.value.match(numbers) || playerSixGuessInput.value.match(alphabet))  && p6.style.display === "block"){
-    window.alert("Please input a number between 1-100 Player 6");
+    window.alert("Letters not allowed. Please input a number between 1-100 Player 6");
   }
   if(playerSixGuessInput.value > 100){
     window.alert("Values over 100 is not allowed Player 6");
