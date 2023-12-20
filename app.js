@@ -53,14 +53,6 @@ let computerWinnerDisplay = document.getElementById("winner-computer");
 let differenceDisplay = document.getElementsByClassName("difference");
 let winnerDisplay = document.getElementsByClassName("winner");
 
-//round difference
-let playerOneDifference = 0;
-let playerTwoDifference = 0;
-let playerThreeDifference = 0;
-let playerFourDifference = 0;
-let playerFiveDifference = 0;
-let playerSixDifference = 0;
-let computerDifference = 0;
 
 //player summary
 let playerOneSummary = document.getElementById("p1-summary");

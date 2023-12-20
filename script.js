@@ -5,15 +5,6 @@ let fourPlayer = document.getElementById("four-player");
 let fivePlayer = document.getElementById("five-player");
 let sixPlayer = document.getElementById("six-player");
 
-//initialize scores
-let playerOneScore = 0;
-let playerTwoScore = 0;
-let playerThreeScore = 0;
-let playerFourScore = 0;
-let playerFiveScore = 0;
-let playerSixScore = 0;
-let computerScore = 0;
-
 //total difference 
 let playerOneTotalDifference = 0;
 let playerTwoTotalDifference = 0;
@@ -69,9 +60,9 @@ for(let i=0; i < winnerDisplay.length; i++){
 }
 roundNumberDisplay.innerText = 1;
 playerOneScore = 0;
-playerOneScoreDisplay.innerText = playerOneScore;
+playerOneScoreDisplay.innerText = 0;
 playerTwoScore = 0;
-playerTwoScoreDisplay.innerText = playerTwoScore;
+playerTwoScoreDisplay.innerText = 0;
 playerThreeScore = 0;
 playerThreeScoreDisplay.innerText = playerThreeScore;
 playerFourScore = 0;
@@ -184,7 +175,6 @@ const updateScore = winner => {
   if(winner === 'one'){
   playerOneWinnerDisplay.innerHTML = "You win!";
   playerOneScore++;
-
 } else if(winner === 'two'){
   playerTwoWinnerDisplay.innerHTML = "You win!";
   playerTwoScore++;
