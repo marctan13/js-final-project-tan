@@ -5,15 +5,6 @@ let fourPlayer = document.getElementById("four-player");
 let fivePlayer = document.getElementById("five-player");
 let sixPlayer = document.getElementById("six-player");
 
-//total difference 
-let playerOneTotalDifference = 0;
-let playerTwoTotalDifference = 0;
-let playerThreeTotalDifference = 0;
-let playerFourTotalDifference = 0;
-let playerFiveTotalDifference = 0;
-let playerSixTotalDifference = 0;
-let computerTotalDifference = 0;
-
 //player card
 let firstPlayer = document.getElementById("p1");
 let computerPlayer = document.getElementById("cpu");

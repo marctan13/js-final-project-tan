@@ -84,6 +84,13 @@ guessButton.addEventListener("click", () => {
   checkInput();
   // Generate the target value
   target = generateTarget();
+
+  showInput();
+
+  //switch the disabled state of the two buttons alternatively
+  guessButton.setAttribute("disabled", true);
+  nextRoundButton.removeAttribute("disabled");
+
   // Retrieve the player's guess
   const currentPlayerOneGuess = playerOneGuessInput.value;
   const currentPlayerTwoGuess = playerTwoGuessInput.value;
@@ -102,7 +109,6 @@ guessButton.addEventListener("click", () => {
   const playerFour = new Player("four", playerFourGuessInput.value);
   const playerFive = new Player("five", playerFiveGuessInput.value);
   const playerSix = new Player("six", playerSixGuessInput.value);
-  // const computer = new Player("computer", computerGuess);
 
   //INPUT ROUND DIFFERENCE TO TABLE
   // let playerOneRoundDIfference = document.getElementById(
@@ -263,12 +269,6 @@ guessButton.addEventListener("click", () => {
     playerSixTotalDifference;
   document.getElementById("cumu-difference-computer").innerText =
     computerTotalDifference;
-
-  showInput();
-
-  //switch the disabled state of the two buttons alternatively
-  guessButton.setAttribute("disabled", true);
-  nextRoundButton.removeAttribute("disabled");
 });
 //end of event listener
 
