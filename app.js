@@ -110,28 +110,7 @@ guessButton.addEventListener("click", () => {
   const playerFive = new Player("five", playerFiveGuessInput.value);
   const playerSix = new Player("six", playerSixGuessInput.value);
 
-  //INPUT ROUND DIFFERENCE TO TABLE
-  // let playerOneRoundDIfference = document.getElementById(
-  //   "player1-difference-table"
-  // );
-  // playerOneRoundDIfference.innerText = playerOne.getDifference();
 
-  //add rows to table depending on players
-  // function twoRow() {
-  //   var table = document.getElementById("diff-table");
-  //   var tr = document.createElement("tr");
-  //   var th = document.createElement("th");
-  //   var td = document.createElement("td");
-  //   td.innerText = playerTwo.getDifference();
-  //   th.innerText = "Player 2";
-  //   tr.appendChild(th);
-  //   tr.appendChild(td);
-  //   table.appendChild(tr);
-  // }
-
-  // function ThreeRow() {
-  //   twoRow();
-  // }
   // Display the computer guess and the target
   computerGuessDisplay.innerText = computerGuess;
   targetNumberDisplay.innerText = target;
